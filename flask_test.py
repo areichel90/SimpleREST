@@ -66,13 +66,16 @@ def single_entry(id):
 
         elif request.method == "PUT":
             for entry in test_payload:
-                if test_payload[entry] == id:
-                    updated_payload = {
-                        "id":new_id,
-                        "author":new_author,
-                        "title":new_payload 
+                if entry["id"] == id:
+                    entry["id"] = new_id
+                    entry["author"] = new_author
+                    entry["title"] = new_payload
+                    updated_entry = {
+                        "id":entry["id"],
+                        "author":entry["author"],
+                        "title":entry["title"] 
                     }
-            return jsonify(updated_payload)
+            return jsonify(entry)
 
 
 
@@ -89,4 +92,6 @@ def admin():
     return redirect(url_for("home"))
 
 if __name__ == "__main__":
-    app.run(debug=True)
+    app.run(host="127.0.0.1", 
+            port=8000,
+            debug=True)
