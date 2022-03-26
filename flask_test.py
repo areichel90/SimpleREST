@@ -23,15 +23,23 @@ def sandbox():
 
     ''' PUT/POST Method '''
     if (request.method == "POST" or request.method == "PUT"):
-        new_id = request.form["id"]
+        '''new_id = request.form["id"]
         new_author = request.form["author"]
-        new_payload = request.form["payload"]
+        new_payload = request.form["payload"]'''
+
+        new_device = request.form['device']
+        new_datetime = request.form['datetime']
+        new_download = request.form['download_speed']
+        new_upload = request.form['upload_speed']
 
         if request.method == "POST":
             new_entry = {
-                "id":new_id,
-                "author":new_author,
-                "payload":new_payload
+                "device":new_device,
+                "datetime":new_datetime,
+                "down":new_download,
+                "up":new_upload
+                #"author":new_author,
+                #"payload":new_payload
             }
             test_payload.append(new_entry)
             return jsonify(test_payload)
@@ -92,6 +100,8 @@ def admin():
     return redirect(url_for("home"))
 
 if __name__ == "__main__":
-    app.run(host="127.0.0.1", 
+    app.run(host="0.0.0.0", 
             port=8000,
             debug=True)
+    
+    #app.run(debug=True)

@@ -13,7 +13,7 @@ def POST(endpoint, payload, verbose=True):
 if __name__ == "__main__":
     sandbox_route = "http://127.0.0.1:8000/sandbox"
     test_payload = {
-        "author": "macbook_PUT", 
+        "author": "macbook_PUT_", 
         "id": "test_payload_2", 
         "payload": "testing, testing?"
     }
